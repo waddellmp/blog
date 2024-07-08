@@ -1,11 +1,16 @@
 <h1>Blog Posts</h1>
 <% @blog_posts.each do |blog_post| %>
-  <% if blog_post.draft? %>
-    <div class="bg-gray-100 text-gray-900 p2 rounded">Draft</div>
-  <% end %>
-  <% if blog_post.scheduled? %>
-    <div class="bg-blue-100 text-blue-900 p2 rounded">Scheduled</div>
-  <% end %>
-  <h2><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
-  <%= blog_post.body %>
+  <div class="flex items-center gap-8 mb-4">
+    <h2 class="my-0 mr-auto"><%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
+    <% if blog_post.draft? %>
+      <div class="inline-block bg-gray-100 text-gray-900 p-2 rounded">Draft</div>
+    <% end %>
+    <% if blog_post.scheduled? %>
+      <div class="inline-block bg-blue-100 text-blue-900 p-2 rounded">Scheduled</div>
+    <% end %>
+    <% if blog_post.published? %>
+      <div class="inline-block bg-green-100 text-green-900 p-2 rounded">Published</div>
+    <% end %>
+  </div>
+  <%= blog_post.content %>
 <% end %>
