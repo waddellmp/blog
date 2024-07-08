@@ -9,5 +9,8 @@
 #   end
 
 # Create a User
-user = User.where(email: 'waddellmp08@gmail.com').first_or_initialize
-user.update({ password: 'password', password_confirmation: 'password' })
+user = User.where(email: Rails.application.credentials.dig(:seed_credentials, :username)).first_or_initialize
+user.update({
+              password: Rails.application.credentials.dig(:seed_credentials, :password),
+              password_confirmation: Rails.application.credentials.dig(:seed_credentials, :password)
+            })
