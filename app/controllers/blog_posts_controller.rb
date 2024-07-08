@@ -51,9 +51,9 @@ class BlogPostsController < ApplicationController
   private
 
   # Define private method to permit require :blog_post key in params object
-  # Then permit and extract only :title and :body keys
+  # Then permit and extract only :title and :content keys
   def blog_post_params
-    params.require(:blog_post).permit(:title, :body, :published_at)
+    params.require(:blog_post).permit(:title, :content, :published_at)
   end
 
   def set_blog_post

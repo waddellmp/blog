@@ -1,10 +1,9 @@
-
 <%= form_with model: @blog_post do |form| %>
   <% if form.object.errors.any? %>
     <div>
       <% form.object.errors.full_messages.each do |message| %>
-        <div><%=message%></div>
-      <%end%>
+        <div><%= message %></div>
+      <% end %>
     </div>
   <% end %>
   <div>
@@ -12,8 +11,8 @@
     <%= form.text_field :title %>
   </div>
   <div>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
   </div>
   <div>
     <%= form.label :published_at %>
